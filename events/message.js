@@ -1,7 +1,20 @@
+const wash = require('washyourmouthoutwithsoap');
+var Filter = require('bad-words'),
+    filter = new Filter();
 module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
-
+   const wordArray = wash.words('en')
+   const wordArrayManu = ["Ass"]
+   if( wordArray.some(word => message.content.includes(word)) ) {
+    message.reply("Warning: please watch what you say...");
+    message.delete();
+  }
+  if( wordArrayManu.some(word => message.content.includes(word))) {
+    message.reply("Warning: please watch what you say...");
+    message.delete();
+  }
+    
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(client.config.prefix) !== 0) return;
 
@@ -17,4 +30,5 @@ module.exports = (client, message) => {
     client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
     // Run the command
     cmd.run(client, message, args);
-};
+    }
+

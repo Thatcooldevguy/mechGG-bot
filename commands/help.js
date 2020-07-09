@@ -3,11 +3,11 @@ const Pagination = require('discord-paginationembed');
 const PermsDeined = new Discord.MessageEmbed()
     .setTitle("Oops!")
     .setColor(0x00AE86)
-    .setDescription("It seems I do not have the `MANAGE_MESSAGES` perm. Please give me this, or run !!texthelp")
+    .setDescription("It seems I do not have the `MANAGE_MESSAGES` perm. Please give me this, or run ?texthelp")
     .setTimestamp()
 exports.run = async (client, message, member) => {
     const FieldsEmbed = new Pagination.FieldsEmbed()
-        .setArray([{ word: 'ping | Pong?' },{ word: 'help | this message' },  {word: 'kick reason user | kicks someone' },  {word: 'ban reason user | bans someone' } , {word: 'warn reason user | warns someone' },  {word: 'sever  | Shows Support Sever Invite'}, {word: 'Credits  | Shows The Credits'}])
+        .setArray([{ word: 'ping | Pong?' },{ word: 'help | this message' },  {word: 'kick reason user | kicks someone' },  {word: 'ban reason user | bans someone' } , {word: 'warn reason user | warns someone' },   {word: 'clear @user amount  | clear messages for a user or amount.'}])
         // Set users who can only interact with the instance, set as `[]` if everyone can interact. ])
         // Set users who can only interact with the instance, set as `[]` if everyone can interact.
         .setAuthorizedUsers([message.author.id])

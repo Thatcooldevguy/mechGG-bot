@@ -1,6 +1,6 @@
 const message = require("./message");
 const Discord = require("discord.js");
-const doIntroChanID = "730577092206395455"
+const doIntroChanID = "730608079623946252"
 
 const PostMsg = new Discord.MessageEmbed()
         .setTitle("Thanks for inviteing me!")
