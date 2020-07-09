@@ -13,7 +13,7 @@ exports.run = (client, message, [mention, ...reason]) => {
     const BackToHelp = new Discord.MessageEmbed()
         .setTitle("Help | Ban Command")
         .setColor(0x00AE86)
-        .setDescription("**!!ban reason user** | Bans a user")
+        .setDescription("**?ban reason user** | Bans a user")
         .setTimestamp()
 
     const modRole = message.guild.roles.cache.find(role => role.name === "Admins");

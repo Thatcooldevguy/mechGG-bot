@@ -14,7 +14,7 @@ module.exports = (client, message) => {
 
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return message.channel.send ("Looks like that command does not exist! Try running !!help")
-    client.user.setActivity(`Users: ${client.users.cache.size}  | !!help`, { type: "WATCHING"})
+    client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
     // Run the command
     cmd.run(client, message, args);
 };

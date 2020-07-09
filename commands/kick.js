@@ -13,7 +13,7 @@ exports.run = (client, message, [mention, ...reason]) => {
     const BackToHelp = new Discord.MessageEmbed()
         .setTitle("Help | Kick Command")
         .setColor(0x00AE86)
-        .setDescription("**!!kick reason user** | Kicks a user")
+        .setDescription("**?kick reason user** | Kicks a user")
         .setTimestamp()
 
     const modRole = message.guild.roles.cache.find(role => role.name === "Mods");
