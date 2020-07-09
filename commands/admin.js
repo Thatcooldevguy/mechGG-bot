@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
     if (!message.member.roles.cache.has(role_target.id))
         return message.reply(PermsDeined);
     let member = message.mentions.members.first();
-    member.addRole(role_target)
+    member.role.add(role_target)
     message.channel.send("Admind:" + args)
     message.channel.send("to remove run ?deadmin @user.")
 }

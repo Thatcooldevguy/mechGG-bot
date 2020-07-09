@@ -14,6 +14,6 @@ exports.run = (client, message, args) => {
     if (!message.member.roles.cache.has(role_target2.id))
         return message.reply(PermsDeined);
     let member = message.mentions.members.first();
-    member.removeRole(role_target)
+    member.role.remove(role_target)
     message.channel.send("Removed Mod for:" + args)
 }

@@ -6,9 +6,9 @@ exports.run = (client, message, args) => {
         return message.channel.send("Could not add the role to user. -192")
     }
     if (!message.member.roles.cache.has(role_target2.id))
-         return message.reply(PermsDeined);
+        return message.channel.send("Could not add the role to user. -193")
     let member = message.mentions.members.first();
-    member.addRole(role_target)
+    member.roles.add(role_target)
     message.channel.send("Modded:" + args)
     message.channel.send("to remove run ?demod @user.")
 }
