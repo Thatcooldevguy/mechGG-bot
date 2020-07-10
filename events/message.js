@@ -1,16 +1,24 @@
-const wash = require('washyourmouthoutwithsoap');
-var Filter = require('bad-words'),
-    filter = new Filter();
+const badwords = require("../resources/badwords.json")
+const modwords = require("../resources/modwords.json")
+const overidesJson = require("../resources/overides.json")
 module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
-   const wordArray = wash.words('en')
-   const wordArrayManu = ["Ass"]
+   const BadWordParse = JSON.stringify(badwords)
+   const ModWordParse = JSON.stringify(modwords)
+   const overidesJsonParse = JSON.stringify(overidesJson)
+   const wordArray = JSON.parse(BadWordParse)
+   const ModWordArray = JSON.parse(ModWordParse)
+   const overides = JSON.parse(overidesJsonParse)
+   if(overides.some(word => message.content.includes(word)) ) {
+     console.log("got overided word, not filtilering")
+     return;
+    }
    if( wordArray.some(word => message.content.includes(word)) ) {
     message.reply("Warning: please watch what you say...");
     message.delete();
   }
-  if( wordArrayManu.some(word => message.content.includes(word))) {
+  if( ModWordArray.some(word => message.content.includes(word)) ) {
     message.reply("Warning: please watch what you say...");
     message.delete();
   }
