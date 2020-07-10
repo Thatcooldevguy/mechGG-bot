@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const doLog = "731198202128105572"
 const PermsDeined = new Discord.MessageEmbed()
     .setTitle("You can't do that!")
     .setColor(0x00AE86)
@@ -9,7 +10,7 @@ const NoModRole = new Discord.MessageEmbed()
     .setColor(0x00AE86)
     .setDescription("No mod role! You must have a role named ``Mods`` **it must me M not m**  You can run ?setup to fix this.")
     .setTimestamp()
-exports.run = async (client, message, member) => {
+exports.run = async (client, message, member,args) => {
     const user = message.mentions.users.first();
     const modRole = message.guild.roles.cache.find(role => role.name === "Mods");
     if(!modRole){
@@ -29,6 +30,16 @@ exports.run = async (client, message, member) => {
      messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
     }
     message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
+    const PostLog = new Discord.MessageEmbed()
+    .setTitle("ModAction | Clear")
+    .setColor(0x00AE86)
+    .addFields(
+      { name: 'Moderator:', value: message.author.username, inline: true },
+      { name: 'Messages cleared:', value: amount, inline: true }
+    )
+    .setTimestamp()
+    client.channels.cache.get(doLog).send(PostLog) 
+    
     message.channel.send("Complete: Deleted: " + amount)
 });
 
