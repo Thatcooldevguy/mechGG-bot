@@ -1,6 +1,8 @@
 const badwords = require("../resources/badwords.json")
 const modwords = require("../resources/modwords.json")
 const overidesJson = require("../resources/overides.json")
+const Discord = require("discord.js");
+const doLog = "731198202128105572"
 module.exports = (client, message) => {
     // Ignore all bots
     if (message.author.bot) return;
@@ -16,10 +18,28 @@ module.exports = (client, message) => {
     }
    if( wordArray.some(word => message.content.includes(word)) ) {
     message.reply("Warning: please watch what you say...");
+    const PostLog = new Discord.MessageEmbed()
+        .setTitle("AutoMod | Profianty Filter Triggered!")
+        .setColor(0x00AE86)
+        .addFields(
+          { name: 'Word', value: message.content, inline: true },
+          { name: 'User who did it:', value: message.author.username, inline: true }
+        )
+        .setTimestamp()
+    client.channels.cache.get(doLog).send(PostLog)    
     message.delete();
   }
   if( ModWordArray.some(word => message.content.includes(word)) ) {
     message.reply("Warning: please watch what you say...");
+    const PostLog = new Discord.MessageEmbed()
+        .setTitle("AutoMod | Profianty (Mod) Filter Triggered!")
+        .setColor(0x00AE86)
+        .addFields(
+          { name: 'Word', value: message.content, inline: true },
+          { name: 'User who did it:', value: message.author.username, inline: true }
+        )
+        .setTimestamp()
+    client.channels.cache.get(doLog).send(PostLog)    
     message.delete();
   }
     

@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const doLog = "731198202128105572"
+const casenum = Math.ceil(Math.random() * 100)
 exports.run = (client, message, [mention, ...reason]) => {
     const NoModRole = new Discord.MessageEmbed()
         .setTitle("Config Error!")
@@ -31,11 +33,17 @@ exports.run = (client, message, [mention, ...reason]) => {
     const banMember = message.mentions.members.first();
 
     banMember.ban(reason.join(" ")).then(member => {
-        const Baned = new Discord.MessageEmbed()
-            .setTitle("User has been banned")
-            .setColor("RED")
-            .setDescription(`${member.user.username} was succesfully banned.`)
-            .setTimestamp()
-        message.reply(Baned);
+        message.reply("User was banned.");
+        const PostLog = new Discord.MessageEmbed()
+        .setTitle("ModAction | Ban")
+        .setColor(0x00AE86)
+        .addFields(
+          { name: 'Moderator:', value: message.author.username, inline: true },
+          { name: 'User who was banned:', value: banMember, inline: true },
+          { name: 'Reason:', value: reason, inline: true },
+          { name: 'Case:', value: casenum, inline: true }
+        )
+        .setTimestamp()
+        client.channels.cache.get(doLog).send(PostLog) 
     });
 };

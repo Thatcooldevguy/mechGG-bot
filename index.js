@@ -29,4 +29,4 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-client.login(config.localTesting);
+client.login(config.LocalTest);

@@ -1,19 +1,25 @@
 const Discord = require("discord.js");
-const PermsDeined = new Discord.MessageEmbed()
-    .setTitle("You can't do that!")
-    .setColor(0x00AE86)
-    .setDescription("Either your not a Admin, or you dont have ``ADMINISTRATOR`` permission on your role.")
-    .setTimestamp()
+const doLog = "731198202128105572"
 
 exports.run = (client, message, args) => {
     let role_target =  message.guild.roles.cache.find(r => r.name === "Admins");
-    if(!role_target){
+    let role_target2 =  message.guild.roles.cache.find(r => r.name === "Admins");
+    if(!role_target2) {
         return message.channel.send("Could not add the role to user. -192")
     }
-    if (!message.member.roles.cache.has(role_target.id))
-        return message.reply(PermsDeined);
+    if (!message.member.roles.cache.has(role_target2.id))
+        return message.channel.send("Could not add the role to user. -193")
     let member = message.mentions.members.first();
-    member.role.add(role_target)
+    member.roles.add(role_target)
     message.channel.send("Admind:" + args)
-    message.channel.send("to remove run ?deadmin @user.")
+    const PostLog = new Discord.MessageEmbed()
+    .setTitle("AdminAction | Add Admin")
+    .setColor(0x00AE86)
+    .addFields(
+      { name: 'Admin:', value: message.author.username, inline: true },
+      { name: 'User who was Admind:', value: member, inline: true }
+    )
+    .setTimestamp()
+    client.channels.cache.get(doLog).send(PostLog) 
+    
 }

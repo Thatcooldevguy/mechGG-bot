@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const doLog = "731198202128105572"
+const casenum = Math.ceil(Math.random() * 100)
 exports.run = (client, message, [mention, ...reason]) => {
     const NoModRole = new Discord.MessageEmbed()
         .setTitle("Config Error!")
@@ -31,11 +33,17 @@ exports.run = (client, message, [mention, ...reason]) => {
     const kickMember = message.mentions.members.first();
 
     kickMember.kick(reason.join(" ")).then(member => {
-        const Kicked = new Discord.MessageEmbed()
-            .setTitle("User has been kicked")
-            .setColor(0x00AE86)
-            .setDescription(`${member.user.username} was succesfully kicked.`)
-            .setTimestamp()
-        message.reply(Kicked);
+        message.reply("User was kicked.");
+        const PostLog = new Discord.MessageEmbed()
+        .setTitle("ModAction | Kick")
+        .setColor(0x00AE86)
+        .addFields(
+          { name: 'Moderator:', value: message.author.username, inline: true },
+          { name: 'User who was kicked:', value: kickMember, inline: true },
+          { name: 'Reason:', value: reason, inline: true },
+          { name: 'Case:', value: casenum, inline: true }
+        )
+        .setTimestamp()
+        client.channels.cache.get(doLog).send(PostLog) 
     });
 };
