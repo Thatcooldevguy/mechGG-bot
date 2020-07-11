@@ -1,4 +1,4 @@
-_logo="
+echo"
 
                                   $$\                                                      $$$$$$\   $$$$$$\  
                                   $$ |                                                    $$  __$$\ $$  __$$\ 
@@ -17,7 +17,6 @@ Created by sticks
 
 [OKAY] Started tool. Begining Test Suite 1.0.2...
 "
-echo _logo
 sleep 3.5
 npm install -g --save jshint
 jshint commands/
