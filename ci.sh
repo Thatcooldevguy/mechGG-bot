@@ -1,3 +1,4 @@
+npm install -g --save jshint
 jshint commands/
 jshint events/
 jshint tests/
