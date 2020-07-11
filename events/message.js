@@ -12,36 +12,42 @@ module.exports = (client, message) => {
    const wordArray = JSON.parse(BadWordParse)
    const ModWordArray = JSON.parse(ModWordParse)
    const overides = JSON.parse(overidesJsonParse)
-   if(overides.some(word => message.content.includes(word)) ) {
-     console.log("got overided word, not filtilering")
-     return;
+   for (let i = 0; i < overidesJson.length; i++) {
+    if (message.content.toLowerCase().includes(overidesJson[i])) {
+     return console.log("Got a OVERIRDE! Not fitering..")
     }
-   if( wordArray.some(word => message.content.includes(word)) ) {
+  }
+  for (let i = 0; i < badwords.length; i++) {
+    if (message.content.toLowerCase().includes(badwords[i])) {
+      message.reply("Warning: please watch what you say...");
+      const PostLog = new Discord.MessageEmbed()
+         .setTitle("AutoMod | Profianty Filter Triggered!")
+          .setColor(0x00AE86)
+          .addFields(
+            { name: 'Word', value: message.content, inline: true },
+            { name: 'User who did it:', value: message.author.username, inline: true }
+           )
+        .setTimestamp()
+    client.channels.cache.get(doLog).send(PostLog)    
+    return message.delete();
+  }
+}
+
+for (let i = 0; i < modwords.length; i++) {
+  if (message.content.toLowerCase().includes(modwords[i])) {
     message.reply("Warning: please watch what you say...");
     const PostLog = new Discord.MessageEmbed()
-        .setTitle("AutoMod | Profianty Filter Triggered!")
+       .setTitle("AutoMod | Profianty Filter Triggered!")
         .setColor(0x00AE86)
         .addFields(
           { name: 'Word', value: message.content, inline: true },
           { name: 'User who did it:', value: message.author.username, inline: true }
-        )
-        .setTimestamp()
-    client.channels.cache.get(doLog).send(PostLog)    
-    message.delete();
-  }
-  if( ModWordArray.some(word => message.content.includes(word)) ) {
-    message.reply("Warning: please watch what you say...");
-    const PostLog = new Discord.MessageEmbed()
-        .setTitle("AutoMod | Profianty (Mod) Filter Triggered!")
-        .setColor(0x00AE86)
-        .addFields(
-          { name: 'Word', value: message.content, inline: true },
-          { name: 'User who did it:', value: message.author.username, inline: true }
-        )
-        .setTimestamp()
-    client.channels.cache.get(doLog).send(PostLog)    
-    message.delete();
-  }
+         )
+      .setTimestamp()
+  client.channels.cache.get(doLog).send(PostLog)    
+ return message.delete();
+}
+}
     
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(client.config.prefix) !== 0) return;
