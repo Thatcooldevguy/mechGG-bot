@@ -1,0 +1,37 @@
+{
+  "name": "mechggbot",
+  "version": "1.3.1",
+  "description": "A bot for Mechanyx.gg",
+  "main": "index.js",
+  "dependencies": {
+    "acorn": "^7.3.1",
+    "bad-words": "^3.0.3",
+    "discord-paginationembed": "^2.0.0",
+    "discord.js": "^12.2.0",
+    "enmap": "^5.3.1",
+    "ffmpeg-static": "^4.2.5",
+    "fs": "^0.0.1-security",
+    "is-my-json-valid": "^2.20.4",
+    "washyourmouthoutwithsoap": "^1.0.2",
+    "ytdl-core": "^3.1.2"
+  },
+  "devDependencies": {},
+  "jshintConfig": {
+    "esversion": 8,
+    "asi": true,
+    "node": true
+  },
+  "scripts": {
+    "test": "chmod +x ci.sh && sudo bash ci.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thatcooldevguy/mechGG-bot.git"
+  },
+  "author": "thatcooldevguy, ais4drew",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Thatcooldevguy/mechGG-bot/issues"
+  },
+  "homepage": "https://github.com/Thatcooldevguy/mechGG-bot#readme"
+}
