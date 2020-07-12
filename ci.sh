@@ -9,6 +9,8 @@ echo "[OKAY] jshint threw no errors! Starting test 2/3: Json Check"
 node tests/TestJson.js
 echo "[OKAY] Json threw no errors! Starting test 3/3: Deploy Script Check"
 cd deployment_tool
+pwd
+ls
 bash deploy.sh
 echo "[OKAY] all tests done. Marking as exit code 0.. "
 exit 0
