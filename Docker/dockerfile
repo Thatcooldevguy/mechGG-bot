@@ -1,0 +1,6 @@
+FROM ubuntu:bionic AS base
+WORKDIR /home
+
+# call bash on container create
+ENTRYPOINT "/bin/bash"
+
