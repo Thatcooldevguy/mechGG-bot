@@ -30,3 +30,5 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.login(config.token);
+
+console.log("Bot is online!");
