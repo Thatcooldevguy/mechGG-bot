@@ -4,8 +4,12 @@ const fs = require("fs");
 
 const client = new Discord.Client();
 const config = require("./config.json");
-// We also need to make sure we're attaching the config to the CLIENT so it's accessible everywhere!
+
+  //attaching config...
+
 client.config = config;
+
+//loading events
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -18,17 +22,16 @@ fs.readdir("./events/", (err, files) => {
 
 client.commands = new Enmap();
 
+//loading commands...
+
 fs.readdir("./commands/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
     if (!file.endsWith(".js")) return;
     let props = require(`./commands/${file}`);
     let commandName = file.split(".")[0];
-    console.log(`Attempting to load command ${commandName}`);
     client.commands.set(commandName, props);
   });
 });
 
 client.login(config.token);
-
-console.log("Bot is online!");

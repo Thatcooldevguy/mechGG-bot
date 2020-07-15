@@ -14,7 +14,7 @@ exports.run = async (client, message, member) => {
         // A must: sets the channel where to send the embed
         .setChannel(message.channel)
         // Elements to show per page. Default: 10 elements per page
-        .setElementsPerPage(3)
+        .setElementsPerPage(5)
         // Have a page indicator (shown on message content)
         .setPageIndicator(true)
         .formatField('v1.0.1', el => el.word);
@@ -23,12 +23,10 @@ exports.run = async (client, message, member) => {
     FieldsEmbed.embed
         .setColor(0x00FFFF)
         .setTitle('Help Menu')
-        .setDescription('This is the help menu for AwsomeBot')
+        .setDescription('This is the help menu for the Mechanyx.gg bot')
     if(!message.guild.me.hasPermission("MANAGE_MESSAGES"))
           return message.reply(PermsDeined);
 
     FieldsEmbed.build();
-
-
 
 }

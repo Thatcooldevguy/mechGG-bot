@@ -14,16 +14,14 @@ module.exports = (client, message) => {
 
     //splitting into array...
 
-    const ModWordParse = JSON.stringify(modwords)
+    //const ModWordParse = JSON.stringify(modwords)
 
-    const overidesJsonParse = JSON.stringify(overidesJson)
+    //const overidesJsonParse = JSON.stringify(overidesJson)
 
     const wordArray = JSON.parse(BadWordParse)
 
-    console.log(wordArray);
-
-    const ModWordArray = JSON.parse(ModWordParse)
-    const overides = JSON.parse(overidesJsonParse)
+    /* const ModWordArray = JSON.parse(ModWordParse)
+    const overides = JSON.parse(overidesJsonParse) */
 
     let messageWordArray = message.content.split(" ");
 
@@ -36,8 +34,6 @@ module.exports = (client, message) => {
       //console.log("checking " + BadWordParse[i]);
 
       if (messageWordArray.includes(wordArray[i])) {
-
-        console.log("got a match..."); 
 
         message.reply("Warning: please watch what you say...");
         const PostLog = new Discord.MessageEmbed()
