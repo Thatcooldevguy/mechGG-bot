@@ -1,8 +1,8 @@
 /*
  
-Jeff 1.0
-Working on count soon! Enjoy it though.
-Made for flipped <3
+Jeffe 1.0
+
+Made for fiped <3
 
 
 */
@@ -14,5 +14,5 @@ exports.run = (client, message) => {
     //var jeffCounter;
     //jeffCounter = jeffCount.getInt("jeffCounter")
     //jeffCounter++
-    message.channel.send("Jeff said: \"stay Jeff out there!\"", {files: ["resources/images/jeff.png"]})
+    message.channel.send("This is Jeffe - Jeff\'s Spanish Cousin. He is wishing you many sombreros and delicious tacos in the days to come! 🌮 🌮 🌮", {files: ["resources/images/jeffe.png"]})
 }

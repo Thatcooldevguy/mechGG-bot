@@ -10,17 +10,20 @@ exports.run = (client, message, [mention, ...reason]) => {
       .setColor(0xFFFF5C)
       .setDescription(`Reason: ${warnReason}`)
       .setTimestamp()
+      
   const warnHelp = new Discord.MessageEmbed()
       .setThumbnail(message.guild.iconURL())
       .setTitle("Help")
       .setColor(0xFFFF5C)
       .setDescription(`!!warn @user reason | warns someone `)
       .setTimestamp()
+
   const warnedDone = new Discord.MessageEmbed()
       .setTitle("⚠️ User has been warned!" )
       .setColor(0xFFFF5C)
       .setDescription(`Reason: ${warnReason}`)
       .setTimestamp()
+
   const PermsDeined = new Discord.MessageEmbed()
       .setTitle("You can't do that!")
       .setColor(0x00AE86)
