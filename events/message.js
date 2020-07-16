@@ -12,26 +12,20 @@ module.exports = (client, message) => {
 
     let BadWordParse = JSON.stringify(badwords)
 
-    //splitting into array...
-
-    //const ModWordParse = JSON.stringify(modwords)
-
-    //const overidesJsonParse = JSON.stringify(overidesJson)
 
     const wordArray = JSON.parse(BadWordParse)
 
-    /* const ModWordArray = JSON.parse(ModWordParse)
-    const overides = JSON.parse(overidesJsonParse) */
+    
 
     let messageWordArray = message.content.split(" ");
 
     messageWordArray.map(v => v.toLowerCase());
 
-    //converting to lowercase words...
+    
 
     for(var i = 0; i < wordArray.length; i++){
 
-      //console.log("checking " + BadWordParse[i]);
+      
 
       if (messageWordArray.includes(wordArray[i])) {
 
@@ -52,28 +46,6 @@ module.exports = (client, message) => {
 
     }
 
-   /* for (i = 0; i < overidesJson.length; i++) {
-    if (message.content.toLowerCase().includes(overidesJson[i])) {
-     return console.log("Got a OVERIRDE! Not fitering..")
-    }
-  } */
-
-  /* for (i = 0; i < modwords.length; i++) {
-    if (message.content.toLowerCase().includes(modwords[i])) {
-      message.reply("Warning: please watch what you say...");
-      const PostLog = new Discord.MessageEmbed()
-         .setTitle("AutoMod | Profianty Filter Triggered!")
-          .setColor(0x00AE86)
-          .addFields(
-            { name: 'Word', value: message.content, inline: true },
-            { name: 'User who did it:', value: message.author.username, inline: true }
-           )
-        .setTimestamp()
-    client.channels.cache.get(doLog).send(PostLog)    
-   return message.delete();
-  }
-
-} */
     
 // Ignore messages not starting with the prefix (in config.json)
 if (message.content.indexOf(client.config.prefix) !== 0) return;
