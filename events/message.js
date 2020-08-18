@@ -7,14 +7,16 @@ const Discord = require("discord.js");
 const doLog = "731198202128105572"
 
 const Enmap = require("enmap");
-client.points = new Enmap({name: "points"});
+
 
 module.exports = (client, message) => {
+  const key = `${message.guild.id}-${message.author.id}`;
+  client.points = new Enmap({name: "points"});
   //starbord
   if (message.guild) {
     if (message.author.bot) return;
-    const key = `${message.guild.id}-${message.author.id}`;
-
+    const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
+   
     // Triggers on new users we haven't seen before.
     client.points.ensure(`${message.guild.id}-${message.author.id}`, {
       user: message.author.id,
@@ -25,8 +27,7 @@ module.exports = (client, message) => {
     
     client.points.inc(key, "points");
     
-    // Calculate the user's current level
-    const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
+    
     
     // Act upon level up by sending a message and updating the user's level in enmap.
     if (client.points.get(key, "level") < curLevel) {
@@ -94,6 +95,6 @@ const cmd = client.commands.get(command);
 if (!cmd) return message.channel.send ("Looks like that command does not exist! Try running !!help")
 client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
 // Run the command
-cmd.run(client, message, args, curLevel, key);
+cmd.run(client, message, args, key);
 }
 
