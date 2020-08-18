@@ -11,11 +11,10 @@ exports.run = (client, message, args, key) => {
   
     const embed = new Discord.MessageEmbed()
      .setTitle("Leaderboard")
-     .setAuthor(client.user.username, client.user.avatarURL)
      .setDescription("Our top 10 points leaders!")
      .setColor(0x00AE86);
     for(const data of top10) {
-     embed.addField(client.users.get(data.user).tag, `${data.points} points (level ${data.level})`);
+     embed.addField(client.users.cache.get(data.user).tag, `${data.points} points (level ${data.level})`);
     }
     return message.channel.send({embed});
 }

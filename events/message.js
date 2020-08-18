@@ -15,15 +15,16 @@ module.exports = (client, message) => {
   //starbord
   if (message.guild) {
     if (message.author.bot) return;
-    const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
-   
-    // Triggers on new users we haven't seen before.
+    
     client.points.ensure(`${message.guild.id}-${message.author.id}`, {
       user: message.author.id,
       guild: message.guild.id,
       points: 0,
       level: 1
     });
+    
+    const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
+   
     
     client.points.inc(key, "points");
     
