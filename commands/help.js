@@ -7,7 +7,7 @@ const PermsDeined = new Discord.MessageEmbed()
     .setTimestamp()
 exports.run = async (client, message, member) => {
     const FieldsEmbed = new Pagination.FieldsEmbed()
-        .setArray([{ word: 'ping | Pong?' },{ word: 'help | this message' },  {word: 'kick reason user | kicks someone' },  {word: 'ban reason user | bans someone' } , {word: 'warn reason user | warns someone' },   {word: 'clear @user amount  | clear messages for a user or amount.'}])
+        .setArray([{ word: 'ping | Pong?' },{ word: 'help | this message' },  {word: 'kick reason user | kicks someone' },  {word: 'ban reason user | bans someone' } , {word: 'warn reason user | warns someone' },  {word: 'glitch | HAAAAAAA. Everything is fine. '} , {word: 'mypoints  | Shows points for user'}, {word: 'botinfo  | Shows botinfo.'}, {word: 'jeff  | Shows Jeff Picture.'}, {word: 'jeffe  | Shows jeffe picture'}, {word: 'leaderboard  | Shows points leaderboard'} , {word: 'omegaF  | f.'} ,{word: 'clear @user amount  | clear messages for a user or amount.'}])
         // Set users who can only interact with the instance, set as `[]` if everyone can interact. ])
         // Set users who can only interact with the instance, set as `[]` if everyone can interact.
         .setAuthorizedUsers([message.author.id])
@@ -17,7 +17,7 @@ exports.run = async (client, message, member) => {
         .setElementsPerPage(5)
         // Have a page indicator (shown on message content)
         .setPageIndicator(true)
-        .formatField('v1.0.1', el => el.word);
+        .formatField('v1.5.0-stable', el => el.word);
 
 
     FieldsEmbed.embed
