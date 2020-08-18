@@ -6,8 +6,43 @@ const Discord = require("discord.js");
 
 const doLog = "731198202128105572"
 
+const Enmap = require("enmap");
+
+
 module.exports = (client, message) => {
-    // Ignore all bots
+  const key = `${message.guild.id}-${message.author.id}`;
+  client.points = new Enmap({name: "points"});
+  //starbord
+  if (message.guild) {
+    if (message.author.bot) return;
+    
+    client.points.ensure(`${message.guild.id}-${message.author.id}`, {
+      user: message.author.id,
+      guild: message.guild.id,
+      points: 0,
+      level: 1
+    });
+    
+    const curLevel = Math.floor(0.1 * Math.sqrt(client.points.get(key, "points")));
+   
+    
+    client.points.inc(key, "points");
+    
+    
+    
+    // Act upon level up by sending a message and updating the user's level in enmap.
+    if (client.points.get(key, "level") < curLevel) {
+      message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
+      client.points.set(key, curLevel, "level");
+    }
+
+}
+
+  
+  
+  
+  
+  // WATCH YOUR WORDS :tm: code below
     if (message.author.bot) return;
 
     let BadWordParse = JSON.stringify(badwords)
@@ -61,6 +96,6 @@ const cmd = client.commands.get(command);
 if (!cmd) return message.channel.send ("Looks like that command does not exist! Try running !!help")
 client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
 // Run the command
-cmd.run(client, message, args);
+cmd.run(client, message, args, key);
 }
 

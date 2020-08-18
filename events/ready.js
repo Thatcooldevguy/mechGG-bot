@@ -1,4 +1,6 @@
+
 module.exports = async client => {
+    
     // Log that the bot is online.
     console.log(`[StartupDeamon] OK! Severs: ${client.guilds.cache.size}`);
     console.log(`[StartupDeamon] With ${client.users.cache.size} users `)
