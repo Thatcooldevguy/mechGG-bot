@@ -7,5 +7,5 @@ module.exports = async client => {
 
     // Make the bot "play the game" which is the help command with default prefix.
     client.user.setStatus('online')
-    client.user.setActivity(`Users: ${client.users.cache.size}  | !!help`, { type: "WATCHING"})
+    client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
 };

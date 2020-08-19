@@ -10,6 +10,32 @@ const Enmap = require("enmap");
 
 
 module.exports = (client, message) => {
+  async function random(min=1, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  async function doChange() {
+    const status = await random(1, 3);
+    switch (status) {
+  
+    case 1: {
+      return client.user.setActivity(`am bot | 1.5.0`);
+    }
+
+  
+    case 2: {
+      return client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
+    }
+
+  
+    case 3: {
+      return client.user.setActivity(`what is life? | ?help`)
+    }
+}
+}
+    
+  
   const key = `${message.guild.id}-${message.author.id}`;
   client.points = new Enmap({name: "points"});
   //starbord
@@ -81,7 +107,7 @@ module.exports = (client, message) => {
 
     }
 
-    
+doChange()
 // Ignore messages not starting with the prefix (in config.json)
 if (message.content.indexOf(client.config.prefix) !== 0) return;
 
@@ -93,9 +119,10 @@ const command = args.shift().toLowerCase();
 const cmd = client.commands.get(command);
 
 // If that command doesn't exist, silently exit and do nothing
-if (!cmd) return message.channel.send ("Looks like that command does not exist! Try running !!help")
-client.user.setActivity(`Users: ${client.users.cache.size}  | ?help`, { type: "WATCHING"})
+if (!cmd) return message.channel.send ("Looks like that command does not exist! Try running ?help")
+
+
 // Run the command
 cmd.run(client, message, args, key);
-}
 
+  }
